@@ -45,4 +45,4 @@ void Waiter::Show() const
 
 
 //Singer
-char *Singer::pv[] = {""};
+char *Singer::pv[] = {(char*)""};
