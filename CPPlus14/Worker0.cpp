@@ -34,6 +34,7 @@ void Waiter::Set()
 	{
 		continue;
 	}
+
 }
 
 void Waiter::Show() const
@@ -45,4 +46,37 @@ void Waiter::Show() const
 
 
 //Singer
-char *Singer::pv[] = {(char*)""};
+char *Singer::pv[] = {(char*)"other",(char*)"alto" 
+,(char*)"contralto" ,(char*)"soprano" ,(char*)"bass" ,
+(char*)"baritone" ,(char*)"tenor" };
+
+void Singer::Set()
+{
+	Worker::Set();
+	cout << "Enter number for singer's vocal range:\n";
+	int i;
+	for ( i = 0; i < Vtypes; i++)
+	{
+		cout << i << ": " << pv[i] << "  ";
+		if (i%4==3)
+		{
+			cout << endl;
+		}
+	}
+	if (i%4!=0)
+	{
+		cout << endl;
+	}
+	while (cin >> voice && (voice < 0 || voice >= Vtypes))
+	{
+		cout << "Please enter a value>=0 and < " << Vtypes << endl;
+	}
+	while (cin.get() != '\n')
+		continue;
+}
+void Singer::Show() const
+{
+	cout << "Category: singer\n";
+	Worker::Show();
+	cout << "Vocal rang: " << pv[voice] << endl;
+}
